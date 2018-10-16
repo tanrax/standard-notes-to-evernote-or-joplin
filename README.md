@@ -1,12 +1,11 @@
 # Standard Notes to Evernote or Joplin
 
-## Use
-
-Rename your exported file as notes.txt, then...
+## Usage:
 
 ```bash
-python3 standard-notes-to-enex.py notes.txt
+python3 standard-notes-to-enex.py SN_Archive.txt
 ```
+If a name like `SN_Archive.txt` is not provided, the script will assume your file is called `notes.txt`.
 
 ## Tutorial
 

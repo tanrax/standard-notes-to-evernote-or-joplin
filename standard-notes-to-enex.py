@@ -1,7 +1,10 @@
 import json
 import html
+from sys import argv
 
-data = json.load(open('notes.txt'))
+source = argv[1] if len(argv) > 1 else 'notes.txt'
+
+data = json.load(open(source))
 
 
 def text_from_html(title, text):
