@@ -24,6 +24,7 @@ final_file = '''
 for key, item in enumerate(data['items']):
     if 'title' in item['content'] and 'text' in item['content']:
         title = item['content']['title']
+        title = html.escape(title)
         text = item['content']['text']
         text = text_from_html(title, text)
         final_file += '''<note><title>{title}</title><content><![CDATA[<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note>{text}</en-note>]]></content><created>20171228T194130Z</created><updated>20171228T194141Z</updated><note-attributes><author></author><source></source><reminder-order>0</reminder-order></note-attributes></note>'''.format(title=title, text=text)
