@@ -24,7 +24,6 @@ final_file = '''
 '''
 
 tag_notes_links = {}
-# first we build the tag hash
 for key, item in enumerate(data['items']):
     if item['content_type'] == 'Tag':
         for inner_key, reference in enumerate(item['content']['references']):
@@ -44,18 +43,16 @@ counter = 0
 for key, item in enumerate(data['items']):
  if item['content_type'] == 'Note':
 
-#    if 'title' in item['content'] and 'text' in item['content']: # tís this if really needed?
-
     if 'title' in item['content']:
         title = item['content']['title']
         title = html.escape(title)
-        # title = re.sub(r'\\([^\w])', r'\1', title) # if you have mal-imported notes from earliner in SN, then this de-escaping may help you
+        title = re.sub(r'\\([^\w])', r'\1', title) # if you have mal-imported notes from earliner in SN, then this de-escaping may help you
     else:
         title = "empty title"
 
     text = item['content']['text']
     text = text_from_html(title, text)
-    #text = re.sub(r'\\([^\w])', r'\1', text) # if you have mal-imported notes from earliner in SN, then this de-escaping may help you
+    text = re.sub(r'\\([^\w])', r'\1', text) # if you have mal-imported notes from earliner in SN, then this de-escaping may help you
 
     if item['uuid'] not in tag_notes_links:
         print(f"Whoops .... {title} had no tag ... if this is expected, then safely ignore ... Setting tag: 'Missing-Standard-Notes-Tag'.")
