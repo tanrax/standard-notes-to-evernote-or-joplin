@@ -14,7 +14,7 @@ def text_from_html(title, text):
     temp_text = text.replace(title + '\n\n  \n\n', '')
     # Parse to html
     temp_text = html.escape(temp_text)
-    temp_text = temp_text.replace('\n', '<br>')
+    temp_text = temp_text.replace('\n', '<br />')
     return temp_text
 
 final_file = '''
