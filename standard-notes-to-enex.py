@@ -3,11 +3,12 @@ import html
 import datetime
 import re
 from sys import argv
+import zipfile
 
-source = argv[1] if len(argv) > 1 else 'notes.txt'
+source = argv[1] if len(argv) > 1 else 'notes.zip'
 
-data = json.load(open(source))
-
+with zipfile.ZipFile(source, 'r') as zip_ref:
+    data = json.loads(zip_ref.read('Standard Notes Backup and Import File txt.txt').decode('utf-8'))
 
 def text_from_html(title, text):
     # Clear title
@@ -65,6 +66,6 @@ final_file += '''</en-export>''' # close root tag
 
 
 # Save
-with open("notes.enex", "w") as text_file:
+with open("notes.enex", "w", encoding='utf-8') as text_file:
     text_file.write(final_file)
 
