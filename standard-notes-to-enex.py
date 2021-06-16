@@ -8,7 +8,7 @@ import zipfile
 source = argv[1] if len(argv) > 1 else 'notes.zip'
 
 with zipfile.ZipFile(source, 'r') as zip_ref:
-    data = json.loads(zip_ref.read('Standard Notes Backup and Import File txt.txt').decode('utf-8'))
+    data = json.loads(zip_ref.read('Standard Notes Backup and Import File.txt').decode('utf-8'))
 
 def text_from_html(title, text):
     # Clear title
